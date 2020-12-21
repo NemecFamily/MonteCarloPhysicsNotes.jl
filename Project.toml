@@ -1,0 +1,10 @@
+name = "MonteCarloPhysicsNotes"
+uuid = "1342b2b3-cf69-4dfb-b48d-9661f65c0b6e"
+authors = ["Paul Nemec"]
+version = "0.0.1"
+
+[extras]
+Test = "8dfed614-e22c-5e08-85e1-65c5234f0b40"
+
+[targets]
+test = ["Test"]
