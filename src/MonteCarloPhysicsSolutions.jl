@@ -1,3 +1,0 @@
-module MonteCarloPhysicsSolutions
-
-end # module

@@ -1,5 +1,5 @@
-using Test, MonteCarloPhysicsSolutions
+using Test, MonteCarloPhysicsNotes
 
-@testset "MonteCarloPhysicsSolutions" begin
+@testset "MonteCarloPhysicsNotes" begin
 
 end
