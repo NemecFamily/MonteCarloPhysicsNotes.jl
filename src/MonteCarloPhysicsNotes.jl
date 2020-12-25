@@ -1,3 +1,0 @@
-module MonteCarloPhysicsNotes
-
-end # module

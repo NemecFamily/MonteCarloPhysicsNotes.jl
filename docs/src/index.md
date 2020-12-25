@@ -1,3 +1,0 @@
-# MonteCarloPhysicsNotes.jl
-
-Some docs.
