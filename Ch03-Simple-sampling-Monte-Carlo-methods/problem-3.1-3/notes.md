@@ -7,11 +7,11 @@ integrand is evaluated is chosen randomly. The family of MC integration
 method unfold their benefits for high-dimensional integrals.
 For more details see
 [Wikipedia Article](https://en.wikipedia.org/wiki/Monte_Carlo_integration) or
-[^1][Landau & Binder (2014)](https://doi.org/10.1017/CBO9781139696463.004)
+[Landau & Binder (2014)](https://doi.org/10.1017/CBO9781139696463.004)
 
 
 
-[^1] Landau, D., & Binder, K. (2014).
+[Landau & Binder (2014)] Landau, D., & Binder, K. (2014).
 Simple sampling Monte Carlo methods.
 In A Guide to Monte Carlo Simulations in Statistical Physics (pp. 51-70).
 Cambridge: Cambridge University Press.
