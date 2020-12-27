@@ -1,43 +1,45 @@
-"""
-Open questions:
-    How to set the seed of the random number generator?
-    Could we reformulate the function by creating a 2-dim random array with axis
-    1 betwenn limit[1] and limit[2], and axis 2 random array between min and max
-    of f(x=[1,2])?
+using Distributions
+using Random: AbstractRNG, MersenneTwister, default_rng
 
 """
-function f(x::Float64)::Float64
-    """
-    f(x::Float64)::Float64
+    f(x::Real)
 
-    Define the function to be integrated
-    """
-    fx = x^10 - 1
-    return fx
+the function to be integrated.
+"""
+f(x::Real) = x^10 - 1
+
+"""
+    mc_hitormiss(rng::AbstractRNG, N::Int, limits::NTuple{2, Real})
+
+integration function
+"""
+function mc_hitormiss(f, rng::AbstractRNG, N::Integer, (lb, ub)::NTuple{2, Real})
+
+    hit = 0
+
+    for i = 1:N
+        x = rand(rng, Uniform(lb, ub))
+        y_guess = rand(rng, Uniform(f(lb), f(ub)))
+        y_guess < f(x) && (hit += 1)
+    end
+
+    @info "Hit $hit, from $N."
+
+    return (ub-lb) * (f(ub)-f(lb)) * hit / N
 end
 
-function mc_hitormiss(N::Int, limits=[1., 2.])
+function mc_hitormiss(f, N::Integer, (lb, ub)::NTuple{2, Real})
+    mc_hitormiss(f, default_rng(), N::Integer, (lb, ub)::NTuple{2, Real})
+end
+
+function mc_importancesampling(N::Int, limits=[1., 2.])
     """
     integration function
     """
     hit = 0
-    for i = 1:N
-        x = rand()*(limits[2]-limits[1])+limits[1]
-        y_guess = rand()*(f(limits[2])-f(limits[1]))+f(limits[1])
-        y = f(x)
 
-        if y_guess < y
-            hit += 1
-        end
-    end
-    full_area = (limits[2]-limits[1]) * (f(limits[2])-f(limits[1]))
 
-    area = full_area * hit / (N)
-
-    println("Hit ", hit, " from ", N, ".")
-    println("Solution of integral: ", area)
-
-    return area
 end
 
-mc_hitormiss(100000, [1., 2.])
+println("Solution of integral: ",
+        mc_hitormiss(f, 100000, (1., 2.)))
