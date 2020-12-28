@@ -38,3 +38,6 @@ function importance(f, rng::AbstractRNG, (lbx, ubx), d::UnivariateDistribution, 
         f(x) / pdf(d, x)
     end
 end
+
+importance(f, (lbx, ubx), d::UnivariateDistribution, N::Integer) =
+    importance(f, default_rng(), (lbx, ubx), d, N)
